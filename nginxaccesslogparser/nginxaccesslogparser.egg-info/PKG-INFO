@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: nginxaccesslogparser
+Version: 0.8.0
+Summary: nginx access log parser
+Home-page: https://github.com/kaustubholpadkar/nginx-access-log-parser-Python
+Author: Kaustubh Olpadkar
+Author-email: kaustubh.olpadkar@gmail.com
+License: UNKNOWN
+Description: # nginx-access-log-parser-Python
+        nginx access log parser Python
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
