@@ -34,10 +34,10 @@ def main():
 			# displays summary
 			show_details()
 		elif (not threaded) and follow:
-			myfile = open(access_log_path, 'r')
+			access_log_file = open_file(access_log_path)
 			# start_prompt_thread()
 			while True:
-				logs = myfile.readlines()
+				logs = access_log_file.readlines()
 				if len(logs) is not 0:
 					# print('Parsing Started')
 					records = parse_logs(logs)
@@ -50,8 +50,8 @@ def main():
 					# set_prompt_flag()
 
 				else:
-					time.sleep(10.0)
-		else:
+					time.sleep(1.0)
+		elif threaded:
 			threads = []
 			flag = True
 			access_log_file = open_file(access_log_path)
@@ -78,8 +78,25 @@ def main():
 			set_total_time()
 			set_requests_per_second()
 
-			# displays summary
-			show_details()
+			if follow:
+				while True:
+					logs = access_log_file.readlines()
+					if len(logs) is not 0:
+						# print('Parsing Started')
+						records = parse_logs(logs)
+						process_records(records)
+
+						set_avg_bytes_sent()
+						set_total_time()
+						set_requests_per_second()
+						# print('Parsing Completed')
+						# set_prompt_flag()
+
+					else:
+						time.sleep(1.0)
+			else:
+				# displays summary
+				show_details()
 	except KeyboardInterrupt:
 		show_details()
 		exit(0)
